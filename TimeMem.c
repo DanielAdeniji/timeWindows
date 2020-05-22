@@ -1,5 +1,8 @@
 /* TimeMem.c - Windows port of Unix time utility */
 
+//added by dadeniji 2020-05-22
+#define NDEBUG 1
+
 #include <Windows.h>
 #include <Psapi.h>
 #include <stdio.h>

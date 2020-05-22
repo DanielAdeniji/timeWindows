@@ -1,5 +1,4 @@
 @echo off
-call softLinksRemove.cmd
 
 if exist _stage del  _stage /S /Q
 
