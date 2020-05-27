@@ -6,11 +6,9 @@ setlocal
 	
 	git add TimeMem.c
 	
-	git add Timemem.ico
+	git add TimeMem.ico
 
-	git add Timemem.rc
-		
-	git add git*.cmd
+	git add TimeMem.rc
 	
 	set _folder=microsoft\visualStudio
 	
@@ -22,7 +20,7 @@ setlocal
 
 	git add %_folder%\softLinksRemove.cmd
 	
-	git add %_folder%\Timemem.rc
+	rem git add %_folder%\Timemem.rc
 	
 	git add %_folder%\bin\TimeMem.exe
 	
@@ -37,10 +35,11 @@ setlocal
 
 	git add %_folder%\softLinksRemove.cmd
 	
-	git add %_folder%\Timemem.rc
+	rem git add %_folder%\Timemem.rc
 	
 	git add %_folder%\bin\TimeMem.exe
 		
+	git add git*.cmd
 	
 	
 endlocal

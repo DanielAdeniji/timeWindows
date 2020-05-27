@@ -38,7 +38,7 @@ del %_folderStage% /Q
 
 del %_folderExecutable% /Q
 
-SET "_COMPILE_OPTIONS_FILE_C=-c"
+SET "_COMPILE_OPTIONS_FILE_C=-c  -Wunused " 
 
 SET "_COMPILE_OPTION_FILE_RESOURCE_FORMAT_OUTPUT=coff"
 

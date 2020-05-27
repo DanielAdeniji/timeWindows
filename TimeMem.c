@@ -8,6 +8,36 @@
 #include <stdio.h>
 #include <tchar.h>
 
+void displayLastError(void)
+{
+	/*
+		Aaronontheweb
+		Win32 Errors: How to Format GetLastError() Output into Readable Strings
+		https://gist.github.com/Aaronontheweb/7461004#file-getlasterror-cpp
+	*/
+	DWORD dLastError = GetLastError();
+	LPCTSTR strErrorMessage = NULL;
+	
+	FormatMessage
+	(
+		FORMAT_MESSAGE_FROM_SYSTEM | FORMAT_MESSAGE_IGNORE_INSERTS | FORMAT_MESSAGE_ARGUMENT_ARRAY | FORMAT_MESSAGE_ALLOCATE_BUFFER,
+		NULL,
+		dLastError,
+		0,
+		//(LPWSTR) &strErrorMessage,
+		(LPTSTR) &strErrorMessage,
+		0,
+		NULL
+	);
+
+	//Prints debug output to the console
+	_tprintf(_T(strErrorMessage));
+
+	//Prints debug output to the console
+	_tprintf("Error Code #: %ld\n", dLastError);
+	
+}
+
 /* Displays usage help for this program. */
 static void usage()
 {
@@ -29,6 +59,7 @@ static int info(HANDLE hProcess)
 	FILETIME ftCreation, ftExit, ftKernel, ftUser;
 	double tElapsed, tKernel, tUser;
 	PROCESS_MEMORY_COUNTERS pmc = { sizeof(PROCESS_MEMORY_COUNTERS) };
+	_Bool bRC = 0;
 
 	/* Exit code */
 	if (!GetExitCodeProcess(hProcess, &dwExitCode))
@@ -45,9 +76,20 @@ static int info(HANDLE hProcess)
 
 	/* Memory info */
 	// Print information about the memory usage of the process.
-	if (!GetProcessMemoryInfo(hProcess, &pmc, sizeof(pmc)))
-		return 1;
-
+	bRC = GetProcessMemoryInfo(hProcess, &pmc, sizeof(pmc));
+	
+	/*
+		Aaronontheweb
+		Win32 Errors: How to Format GetLastError() Output into Readable Strings
+		https://gist.github.com/Aaronontheweb/7461004#file-getlasterror-cpp
+	*/
+	if (bRC ==0)
+    {		
+		displayLastError();
+		
+		return (1);
+		
+	}	
 	/* Display info. */
 	_tprintf(_T("Exit code      : %u\n"), dwExitCode);
 
@@ -134,7 +176,11 @@ int _tmain(
 	/* Create the process. */
 	if (!CreateProcess(NULL, szBegin, NULL, NULL, FALSE, 0, NULL, NULL, &si, &pi))
 	{
+		
 		_tprintf(_T("Error: Cannot create process.\n"));
+
+		displayLastError();
+
 		return 1;
 	}
 
