@@ -2,6 +2,8 @@ setlocal
 
 	set _folder=microsoft\visualStudio
 
-	git rm %_folder%\Timemem.rc
+	dir %_folder%\TimeMem.rc
+	
+	git rm %_folder%\TimeMem.rc
 	
 endlocal

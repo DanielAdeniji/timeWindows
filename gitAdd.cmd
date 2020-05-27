@@ -27,4 +27,20 @@ setlocal
 	git add %_folder%\bin\TimeMem.exe
 	
 	
+	set "_folder=minGW"
+	
+	git add %_folder%\cleanup.cmd
+
+	git add %_folder%\compile.cmd
+	
+	git add %_folder%\softLinksCreate.cmd
+
+	git add %_folder%\softLinksRemove.cmd
+	
+	git add %_folder%\Timemem.rc
+	
+	git add %_folder%\bin\TimeMem.exe
+		
+	
+	
 endlocal
