@@ -7,7 +7,9 @@ setlocal
 	git add TimeMem.c
 	
 	git add Timemem.ico
-	
+
+	git add Timemem.rc
+		
 	git add git*.cmd
 	
 	set _folder=microsoft\visualStudio
