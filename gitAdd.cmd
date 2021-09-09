@@ -41,5 +41,6 @@ setlocal
 		
 	git add git*.cmd
 	
+	git add .gitIgnore
 	
 endlocal
