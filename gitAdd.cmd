@@ -16,6 +16,10 @@ setlocal
 
 	git add %_folder%\compile.cmd
 	
+	git add %_folder%\compileUsingMakeFile.cmd
+    
+	git add %_folder%\makefile
+	
 	git add %_folder%\softLinksCreate.cmd
 
 	git add %_folder%\softLinksRemove.cmd
@@ -24,6 +28,7 @@ setlocal
 	
 	git add %_folder%\bin\TimeMem.exe
 	
+	git add %_folder%\bin\TimeMem_x64.exe
 	
 	set "_folder=minGW"
 	
